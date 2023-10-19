@@ -11,12 +11,16 @@
 </head>
 <body>
     <main>
-        <p>Magic <span>Etch-a-Sketch</span> Screen</p>
+        <p><span>Magic</span> <span id="title">Etch-a-Sketch</span> <span>Screen</span></p>
         <div id="grid"></div>
         <div id="controls">
-            <div id="grid-resizer"></div>
+            <div id="size-controller" class="controller">
+                <div class="marker"></div>
+            </div>
             <button>Clear</button>
-            <div id="pen-styler"></div>
+            <div id="color-controller" class="controller">
+                <div class="marker"></div>
+            </div>
         </div>
     </main>
     <footer></footer>
