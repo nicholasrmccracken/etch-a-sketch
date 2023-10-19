@@ -1,0 +1,18 @@
+/* Basic CSS Reset */
+
+/* Remove default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+  
+/* Remove list styles (bullets/numbers) */
+ul, ol {
+    list-style: none;
+}
+
+/* Remove underlines from links */
+a {
+    text-decoration: none;
+}
+  
