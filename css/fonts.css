@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Etch';
-    src: url('fonts/EASTRIAL.otf') format('opentype'),
-         url('fonts/EASTRIAL.ttf') format('truetype');
+    src: url('../fonts/EASTRIAL.otf') format('opentype');
+    src: url('../fonts/EASTRIAL.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
