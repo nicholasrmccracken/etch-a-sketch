@@ -56,7 +56,23 @@ function setSelectedPosition(selector, position) {
 }
 
 function paintGrid(cell) {
-    cell.style.backgroundColor = 'black';
+    switch (colorController.children[0].getAttribute('data-state')) {
+        case 'black':
+            cell.style.backgroundColor = 'black';
+        break;
+
+        case 'shade':
+            cell.style.backgroundColor = 'black';
+        break;
+
+        case 'rainbow':
+            cell.style.backgroundColor = 'black';
+        break;
+
+        case 'erase':
+            cell.style.backgroundColor = '';
+        break;
+    }
 }
 
 function createGrid(size) {
