@@ -66,13 +66,21 @@ function paintGrid(cell) {
         break;
 
         case 'rainbow':
-            cell.style.backgroundColor = 'black';
+            cell.style.backgroundColor = randomizeColor();
         break;
 
         case 'erase':
             cell.style.backgroundColor = '';
         break;
     }
+}
+
+function randomizeColor() {
+    const randomR = Math.floor(Math.random() * 256);
+    const randomG = Math.floor(Math.random() * 256);
+    const randomB = Math.floor(Math.random() * 256);
+
+    return `rgb(${randomR}, ${randomG}, ${randomB})`
 }
 
 function createGrid(size) {
