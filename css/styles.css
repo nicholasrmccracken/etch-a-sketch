@@ -100,27 +100,25 @@ main {
     flex-direction: column;
 }
 
+.icon {
+    width: 15px;
+    aspect-ratio: 1;
+}
+
 #rainbow {
     width: 20px;
-    aspect-ratio: 1;
     background-image: url('../images/rainbow.png');
     background-size: cover;
 }
 
-#black {
-    width: 15px;
-    aspect-ratio: 1;
-    background-color: black;
-}
- 
-#shade {
-    width: 15px;
-    aspect-ratio: 1;
-    background-color: rgb(180, 180, 180);
-}
+#black { background-color: black; }
+#shade { background-color: rgb(180, 180, 180); }
+#erase { background-color: white; }
 
-#erase {
-    width: 15px;
-    aspect-ratio: 1;
-    background-color: white;
+footer {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--main-color);
+    bottom: 0;
+    margin: 35px;
 }
