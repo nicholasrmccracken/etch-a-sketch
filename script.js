@@ -56,13 +56,14 @@ function setSelectedPosition(selector, position) {
 }
 
 function paintGrid(cell) {
+    console.log(cell.style.backgroundColor);
     switch (colorController.children[0].getAttribute('data-state')) {
         case 'black':
             cell.style.backgroundColor = 'black';
         break;
 
         case 'shade':
-            cell.style.backgroundColor = 'black';
+            cell.style.backgroundColor = shadeColor(cell.style.backgroundColor);
         break;
 
         case 'rainbow':
@@ -75,12 +76,22 @@ function paintGrid(cell) {
     }
 }
 
+function shadeColor(color) {
+    if (color === 'black') return 'black';
+    if (color === '') color = 'rgb(250, 235, 215)';
+
+    let RGB = color.substring(4, color.length - 1).split(',');
+    RGB = RGB.map((value) => Math.max(0, parseInt(value.trim()) - 25));
+
+    return `rgb(${RGB[0]}, ${RGB[1]}, ${RGB[2]})`;
+}
+
 function randomizeColor() {
     const randomR = Math.floor(Math.random() * 256);
     const randomG = Math.floor(Math.random() * 256);
     const randomB = Math.floor(Math.random() * 256);
 
-    return `rgb(${randomR}, ${randomG}, ${randomB})`
+    return `rgb(${randomR}, ${randomG}, ${randomB})`;
 }
 
 function createGrid(size) {
