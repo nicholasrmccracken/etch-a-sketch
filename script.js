@@ -3,62 +3,56 @@ window.addEventListener('DOMContentLoaded', () => createGrid(16));
 const grid = document.querySelector('#grid');
 grid.addEventListener('mouseover', (e) => paintGrid(e.target));
 
-sizePositionMapping = {
-    'top': 16,
-    'right': 32,
-    'left': 64,
-    'bottom': 48
-};
-
 const sizeController = document.querySelector('#size-controller');
-sizeController.addEventListener('click', (e) => rotateMarker(e.button, sizeController.children[0]));
+sizeController.addEventListener('click', () => {
+    const updatedSize = parseInt(rotateSelected(sizeController.children[0], ['16', '32', '48', '64']));
+    createGrid(updatedSize);
+});
 
 const clear = document.querySelector('#clear');
-clear.addEventListener('click', () => createGrid(sizePositionMapping[sizeController.children[0].getAttribute('data-position')]));
+clear.addEventListener('click', () => {
+    const currentSize = parseInt(sizeController.children[0].getAttribute('data-state'));
+    createGrid(currentSize);
+});
 
-function rotateMarker(mouseButton, marker) {
-    const positions = ['top', 'right', 'bottom', 'left']
-    let currentPositionIndex = positions.indexOf(marker.getAttribute('data-position'));
+const colorController = document.querySelector('#color-controller');
+colorController.addEventListener('click', () => {
+    rotateSelected(colorController.children[0], ['black', 'shade', 'rainbow', 'erase'])
+});
 
-    if (mouseButton === 0) {
-        currentPositionIndex = (currentPositionIndex + 1) % 4;
-    } else if (mouseButton === 2) {
-        currentPositionIndex = (currentPositionIndex - 1 + 4) % 4;
-    }
+function rotateSelected(selector, options) {
+    const state = selector.getAttribute('data-state')
+    const updatedIndex = (options.indexOf(state) + 1) % options.length;
+    const updatedOption = options[updatedIndex];
 
-    const updatedPosition = positions[currentPositionIndex];
-    marker.setAttribute('data-position', updatedPosition);
-    setMarkerPosition(marker, updatedPosition);
-    createGrid(sizePositionMapping[updatedPosition])
+    setSelectedPosition(selector, updatedIndex);
+    selector.setAttribute('data-state', updatedOption);
+    
+    return updatedOption;
 }
 
-function setMarkerPosition(marker, position) {
-    resetPosition(marker);
-
+function setSelectedPosition(selector, position) {
     switch (position) {
-        case 'top':
-            marker.style.left = '40px';
+        case 0:
+            selector.style.top = '0';
+            selector.style.left = '40px';
         break;
 
-        case 'left':
-            marker.style.top = '40px';
+        case 1:
+            selector.style.top = '40px';
+            selector.style.left = '80px';
         break;
 
-        case 'right':
-            marker.style.left = '80px';
-            marker.style.top = '40px';
+        case 2:
+            selector.style.top = '80px';
+            selector.style.left = '40px';
         break;
 
-        case 'bottom':
-            marker.style.left = '40px';
-            marker.style.top = '80px';
+        case 3:
+            selector.style.top = '40px';
+            selector.style.left = '0';
         break;
     }
-}
-
-function resetPosition(marker) {
-    marker.style.top = '0';
-    marker.style.left = '0';
 }
 
 function paintGrid(cell) {

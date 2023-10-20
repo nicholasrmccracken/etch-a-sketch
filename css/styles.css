@@ -76,7 +76,7 @@ main {
     margin: 6px;
 }
 
-.marker {
+.selector {
     width: 10px;
     aspect-ratio: 1;
     background-color: var(--main-color);
@@ -113,13 +113,13 @@ main {
     background-color: black;
 }
 
-#shader {
+#shade {
     width: 15px;
     aspect-ratio: 1;
     background-color: rgb(180, 180, 180);
 }
 
-#eraser {
+#erase {
     width: 15px;
     aspect-ratio: 1;
     background-color: white;
