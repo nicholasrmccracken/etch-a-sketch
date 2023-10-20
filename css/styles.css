@@ -1,15 +1,14 @@
 :root {
     --main-color: rgb(220, 36, 36);
     --secondary-color: rgb(250, 235, 215);
-    --default-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.7)
+    --background-color: #a7dfbc;
+    --default-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.7);
 }
 
 body {
     font-family: 'Etch', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #a7dfbc;
+    color: var(--secondary-color);
+    background-color: var(--background-color);
 }
 
 main {
@@ -19,13 +18,13 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 25px;
+    margin: 25px auto;
     padding: 20px;
     border-radius: 20px;
     box-shadow: var(--default-shadow);
 }
 
-main p {
+#inscription {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -44,13 +43,28 @@ main p {
     margin: auto;
     border-radius: 10px;
     box-shadow: inset var(--default-shadow);
+    display: flex;
+    flex-wrap: wrap;
 }
 
-#controls {
+#control-panel {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+}
+
+#clear {
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.7);
+    background-color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+#clear:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
 }
 
 .controller {
@@ -59,12 +73,7 @@ main p {
     border-radius: 50%;
     background-color: var(--secondary-color);
     box-shadow: var(--default-shadow);
-}
-
-#controls button {
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: var(--default-shadow);
+    margin: 6px;
 }
 
 .marker {
@@ -72,5 +81,46 @@ main p {
     aspect-ratio: 1;
     background-color: var(--main-color);
     position: relative;
-    top: 40px;
+    left: 40px;
+}
+
+.options-container,
+.controller-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options-container p {
+    font-size: 15px;
+    display: inline;
+}
+
+.controller-container {
+    flex-direction: column;
+}
+
+#rainbow {
+    width: 20px;
+    aspect-ratio: 1;
+    background-image: url('../images/rainbow.png');
+    background-size: cover;
+}
+
+#black {
+    width: 15px;
+    aspect-ratio: 1;
+    background-color: black;
+}
+
+#shader {
+    width: 15px;
+    aspect-ratio: 1;
+    background-color: rgb(180, 180, 180);
+}
+
+#eraser {
+    width: 15px;
+    aspect-ratio: 1;
+    background-color: white;
 }
