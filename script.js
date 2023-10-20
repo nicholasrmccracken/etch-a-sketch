@@ -32,24 +32,27 @@ function rotateSelected(selector, options) {
 }
 
 function setSelectedPosition(selector, position) {
+    const middle = Math.floor(sizeController.clientWidth / 2) - Math.floor(sizeController.children[0].clientWidth / 2);
+    const end = sizeController.clientWidth - sizeController.children[0].clientWidth;
+
     switch (position) {
         case 0:
             selector.style.top = '0';
-            selector.style.left = '40px';
+            selector.style.left = middle + 'px';
         break;
 
         case 1:
-            selector.style.top = '40px';
-            selector.style.left = '80px';
+            selector.style.top = middle + 'px';
+            selector.style.left = end + 'px';
         break;
 
         case 2:
-            selector.style.top = '80px';
-            selector.style.left = '40px';
+            selector.style.top = end + 'px';
+            selector.style.left = middle + 'px';
         break;
 
         case 3:
-            selector.style.top = '40px';
+            selector.style.top = middle + 'px';
             selector.style.left = '0';
         break;
     }
@@ -59,7 +62,7 @@ function paintGrid(cell) {
     console.log(cell.style.backgroundColor);
     switch (colorController.children[0].getAttribute('data-state')) {
         case 'black':
-            cell.style.backgroundColor = 'black';
+            cell.style.backgroundColor = 'rgb(0, 0, 0)';
         break;
 
         case 'shade':
@@ -77,8 +80,7 @@ function paintGrid(cell) {
 }
 
 function shadeColor(color) {
-    if (color === 'black') return 'black';
-    if (color === '') color = 'rgb(250, 235, 215)';
+    if (color === '') color = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color');
 
     let RGB = color.substring(4, color.length - 1).split(',');
     RGB = RGB.map((value) => Math.max(0, parseInt(value.trim()) - 25));
@@ -99,16 +101,16 @@ function createGrid(size) {
     const numCells = size ** 2, cellDimension = grid.clientWidth / size;
     const corners = {
         0: (cell) => {
-            cell.style.borderTopLeftRadius = '10px';
+            cell.style.borderTopLeftRadius = `10px`;
         },
         [size - 1]: (cell) => {
-            cell.style.borderTopRightRadius = '10px';
+            cell.style.borderTopRightRadius = `10px`;
         },
         [numCells - size]: (cell) => {
-            cell.style.borderBottomLeftRadius = '10px';
+            cell.style.borderBottomLeftRadius = `10px`
         },
         [numCells - 1]: (cell) => {
-            cell.style.borderBottomRightRadius = '10px';
+            cell.style.borderBottomRightRadius = `10px`;
         }
     };
 
